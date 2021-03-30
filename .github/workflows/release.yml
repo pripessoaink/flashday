@@ -1,0 +1,27 @@
+name: Release
+# This workflow set up a project release when a tag is pushed following semantic version syntax
+# It builds package distribution files and register them as release artifacts
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - uses: actions/checkout@v2
+      - name: Set up project environment
+        run: make init
+      - name: Build distributable artifacts
+        run: make build
+      - name: Release project version
+        uses: softprops/action-gh-release@v1
+        with:
+          files: dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
