@@ -45,6 +45,9 @@ clean:: ## Delete all files created through Build process
 veryclean:: clean ## Delete all generated files
 	rm -fr venv
 
+check:: ## Check package setup is running correctly
+	$(PYTHON) setup.py --name --version
+
 
 .ONESHELL:
-.PHONY: help isolate init install develop build compile test publish clean veryclean
+.PHONY: help isolate init install develop build compile test publish clean veryclean check
