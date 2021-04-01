@@ -61,7 +61,7 @@ def rename_package():
                              .split('/')[:-1]
 
     os.rename(join(SOURCE_ROOT, NAMESPACE), join(SOURCE_ROOT, namespace))
-    os.rename(join(f'{SOURCE_ROOT}/{namespace}', PACKAGE), join(f'{SOURCE_ROOT}/{NAMESPACE}', package))
+    os.rename(join(f'{SOURCE_ROOT}/{namespace}', PACKAGE), join(f'{SOURCE_ROOT}/{namespace}', package))
 
 
 # PACKAGE METADATA
@@ -182,7 +182,6 @@ def package_classifiers(*classifiers):
     ]
 
 
-
 setuptools.setup(
     # name='',
     # description='',
@@ -226,13 +225,15 @@ setuptools.setup(
     # cmdclass={},
     **setup_commands(),
 
-    # install_requires=[],
+    install_requires=[
+        'Django >= 3.1, <4.x'
+    ],
     extras_require={
         'dev': [
-            'pip >= 21.x, <22.0',
+            'pip >=21.x, <22.0',
             'setuptools >=54.x, <55.0',
             'wheel >=0.36, <1.0',
-            'twine >=3.x, <4.0',
+            'twine >=3.4, <4.0',
             'trove-classifiers >=2021.x',
             'GitPython >=3.x, <4.0',
             'requests >=2.x, <3.0'
@@ -254,8 +255,8 @@ setuptools.setup(
         # 'Development Status :: 6 - Mature'
         # 'Development Status :: 7 - Inactive'
 
-        # 'Intended Audience :: Customer Service',
-        'Intended Audience :: Developers',
+        'Intended Audience :: Customer Service',
+        # 'Intended Audience :: Developers',
         # 'Intended Audience :: Education',
         # 'Intended Audience :: End Users/Desktop',
         # 'Intended Audience :: Financial and Insurance Industry',
@@ -268,6 +269,9 @@ setuptools.setup(
         # 'Intended Audience :: Science/Research',
         # 'Intended Audience :: System Administrators',
         # 'Intended Audience :: Telecommunications Industry',
+
+        'Framework :: Django',
+        'Framework :: Django :: 3.1',
 
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules',
