@@ -3,6 +3,7 @@
 ## Development
 .idea/
 venv/
+**/migrations/
 
 ## Build
 __pycache__/
