@@ -41,6 +41,8 @@ publish:: ## Publish package on PyPI
 
 clean:: ## Delete all files created through Build process
 	-$(PYTHON) setup.py clean
+	find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+	find . -path "*/migrations/*.pyc"  -delete
 
 veryclean:: clean ## Delete all generated files
 	rm -fr venv

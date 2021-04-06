@@ -21,7 +21,7 @@ class ArtistAdmin(admin.ModelAdmin):
 
 # @admin.register(Collection)
 class CollectionAdmin(admin.ModelAdmin):
-    list_display = ['author']
+    list_display = ['author', 'event']
 
     def author(self, obj):
         return obj.artist.name

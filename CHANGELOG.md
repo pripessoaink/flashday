@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## 0.1.2 - 2021-04-03
 ### Feat
+- Include templates
+
+## 0.1.2 - 2021-04-03
+### Feat
 - Include *set prices* command
 
 ## 0.1.1-35 - 2021-04-01

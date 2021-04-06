@@ -1,3 +1,5 @@
+import re
+
 from django.db.models import (
     CASCADE,
     BooleanField,
@@ -11,6 +13,7 @@ from django.db.models import (
 
 class Event(Model):
     title = CharField(max_length=50)
+    subtitle = CharField(max_length=50)
     description = TextField()
     image = ImageField(upload_to='event')
 
@@ -30,6 +33,7 @@ class Artist(Model):
 
 
 class Collection(Model):
+    event = ForeignKey(Event, on_delete=CASCADE)
     artist = ForeignKey(Artist, on_delete=CASCADE)
 
     def __str__(self):
@@ -42,6 +46,10 @@ class Product(Model):
     description = TextField()
     availability = BooleanField(default=True)
     picture = ImageField(upload_to='product')
+
+    @property
+    def seller(self):
+        self.collection.artist
 
     def __str__(self):
         return self.title

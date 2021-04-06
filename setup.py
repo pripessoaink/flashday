@@ -212,6 +212,7 @@ setuptools.setup(
 
     packages=setuptools.find_namespace_packages(where=SOURCE_ROOT),
     package_dir={'': SOURCE_ROOT},
+    include_package_data=True,
 
     # scripts=''
     **package_scripts(f'{SOURCE_ROOT}/scripts'),

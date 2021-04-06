@@ -1,7 +1,8 @@
 from django.urls import include, path
 
-from .views import Home
+from .views import HomePage, ProductPage
 
 urlpatterns = [
-    path('', Home.as_view(), name='home'),
+    path('', HomePage.as_view(), name='home'),
+    path('amuleto/<int:id>', ProductPage.as_view(), name='product')
 ]
