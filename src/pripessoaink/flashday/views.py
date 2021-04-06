@@ -12,7 +12,7 @@ class HomePage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        flashday = Event.objects.all()[0]
+        flashday = Event.objects.all().first()
         collections = Collection.objects.filter(event_id=flashday.id) \
                                 .prefetch_related('product_set')
 
@@ -34,13 +34,14 @@ class ProductPage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        flashday = Event.objects.all()[0]
+        flashday = Event.objects.all().first()
 
         product = Product.objects.filter(id=self.id) \
                          .prefetch_related('productoption_set') \
-                         .prefetch_related('extrapicture_set')[0]
+                         .prefetch_related('extrapicture_set') \
+                         .first()
 
-        seller = Artist.objects.filter(collection=product.collection.id)[0]
+        seller = Artist.objects.filter(collection=product.collection.id).first()
 
         context.update({
             'flashday': flashday,
