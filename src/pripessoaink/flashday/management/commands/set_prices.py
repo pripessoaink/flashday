@@ -19,12 +19,12 @@ class Command(BaseCommand):
         parser.add_argument('mapping', nargs='+', type=map_type)
 
     def handle(self, *args, **kwargs):
-        for key, value in kwargs['mapping']:
-            try:
+        try:
+            for key, value in kwargs['mapping']:
                 ProductOption.objects\
                     .filter(key__startswith=key)\
                     .update(value=value)
-            except Exception:
-                raise CommandError('Something went wrong')
+        except Exception:
+            raise CommandError('Something went wrong')
 
         self.stdout.write(self.style.SUCCESS('Successfully set product prices'))
